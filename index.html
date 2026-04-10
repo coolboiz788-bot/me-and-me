@@ -12,28 +12,74 @@
       flex-direction: column;
       justify-content: center;
       align-items: center;
-      background-color: #000;
+      background: radial-gradient(circle at center, #111, #000);
       color: white;
       font-family: Arial, sans-serif;
       text-align: center;
+      overflow: hidden;
     }
 
     img {
       max-width: 90%;
-      max-height: 70vh;
-      object-fit: contain;
-      border-radius: 10px;
+      max-height: 60vh;
+      border-radius: 15px;
+      box-shadow: 0 0 40px rgba(0,255,255,0.3);
+      animation: float 3s ease-in-out infinite;
     }
 
     h1 {
-      margin-top: 20px;
-      font-size: 2rem;
-      letter-spacing: 2px;
+      margin-top: 25px;
+      font-size: 2.5rem;
+      letter-spacing: 3px;
+      animation: glow 1.5s ease-in-out infinite alternate, pulse 2s infinite;
+    }
+
+    .quote {
+      margin-top: 10px;
+      font-size: 1rem;
+      opacity: 0.8;
+      animation: fadeIn 3s ease-in-out;
+    }
+
+    @keyframes glow {
+      from {
+        text-shadow: 0 0 10px #fff, 0 0 20px #00ffff;
+      }
+      to {
+        text-shadow: 0 0 20px #00ffff, 0 0 40px #00ffff, 0 0 60px #00ffff;
+      }
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-15px); }
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+      100% { transform: scale(1); }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 0.8; }
     }
   </style>
 </head>
-<body>
+
+<body onclick="document.getElementById('music').play()">
+
   <img src="All might.jpg" alt="Motivation Image">
+
   <h1>YOU CAN DO IT MANGAKA!!!</h1>
+
+  <div class="quote">Your story hasn’t even reached its best arc yet.</div>
+
+  <audio id="music" loop>
+    <source src="You Can Become a Hero.mp3" type="audio/mpeg">
+  </audio>
+
 </body>
 </html>
+
